@@ -183,10 +183,17 @@ int main( int argc, char** argv )
 {
 	printf( "\nAVR StackViewer v0.12 by Benedikt\n\n\n" );
 
-    if ( argc != 2 )
-	{	printf( "Usage: avrStackView <file_name>\n" );
+    if ( argc < 2 )
+	{	printf( "Usage: avrStackView <file_name> [start_func]\n" );
 		return 1;
     }
+
+    char const* start_func = NULL;
+    if ( argc == 3)
+    {
+	    start_func = argv[2];
+    }
+
 
     // Open ELF reader
     IELFI* pReader;
@@ -259,7 +266,7 @@ int main( int argc, char** argv )
     memcpy(program,pSect->GetData(),size);
 	pSect->Release();
 
-	stackanalyse(size/2);
+	stackanalyse(size/2, start_func);
     pReader->Release();
 
     return 0;

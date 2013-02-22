@@ -19,12 +19,12 @@ FILE *fp;
 
 int getfuncname(unsigned long adress);
 void searchprog(unsigned long adress, unsigned short size);
-unsigned long searchstart(void);
+unsigned long searchstart(const char* start_func);
 void analyseint(void);
 
 //#define DEBUG 0
 
-void stackanalyse(unsigned long size)
+void stackanalyse(unsigned long size, char const* start_func)
 {	unsigned long startadress;
 
 	fp=fopen("calltree.txt","w");
@@ -50,7 +50,7 @@ void stackanalyse(unsigned long size)
 	level=0;
 	maxstack=0;
 	maxlevel=0;
-	startadress=searchstart();
+	startadress=searchstart(start_func);
 	if (startadress)
 	{	int pos,j;
 		fprintf(fp,"Functions:\n\n");
@@ -131,7 +131,7 @@ void stackanalyse(unsigned long size)
 	fclose(fp);
 }
 
-unsigned long searchstart(void)					// search main call
+unsigned long searchstart(char const* start_func)					// search main call
 {/*	signed long newadress, adress;
 	if ((program[0]&0xF000)==0xC000)			// rjmp
 	{	newadress=(program[0]&0x0FFF);
@@ -181,9 +181,12 @@ unsigned long searchstart(void)					// search main call
 		}
 	}*/
 
+	if (!start_func)
+		start_func = "main";
+
 	int i;
 	for (i=0; i<funccnt; i++)
-	{	if (!(strcmp(function[i].name,"main")))
+	{	if (!(strcmp(function[i].name, start_func)))
 			return function[i].adress;
 	}
 	return 0;
