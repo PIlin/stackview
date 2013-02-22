@@ -20,3 +20,4 @@ ELFIO-*.tar.gz
 #
 elfdump
 *.dSYM
+calltree.txt

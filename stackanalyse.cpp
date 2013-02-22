@@ -30,7 +30,7 @@ void stackanalyse(unsigned long size, char const* start_func)
 	fp=fopen("calltree.txt","w");
 #ifdef DEBUG
 	for (int i=0; i<funccnt; i++)
-	{	fprintf(fp,"%-32s %6d %6d\n", function[i].name, function[i].adress, function[i].size);	
+	{	fprintf(fp,"%-32s %6d %6d\n", function[i].name, function[i].adress, function[i].size);
 	}
 	fprintf(fp,"\n\n");
 #endif
@@ -85,7 +85,7 @@ void stackanalyse(unsigned long size, char const* start_func)
 		maxstack=0;
 		maxlevel=0;
 		totstack=0;
-		
+
 		fprintf(fp,"\n\nInterrupts:\n\n");
 		analyseint();
 		inttotstack=totstack;
@@ -310,7 +310,7 @@ void searchprog(unsigned long adress, unsigned short size)	// searches a functio
 			totstack+=2;
 			if (totstack>maxstack)
 				maxstack=totstack;
-		}		
+		}
 		else if ((program[i]&0xF000)==0xD000)	// rcall
 		{
 #if (DEBUG>0)
@@ -464,7 +464,7 @@ void searchprog(unsigned long adress, unsigned short size)	// searches a functio
 #endif
 				locstack+=k;
 				totstack+=k;
-				
+
 				if ((program[i+1]&0xF000)==0x4000)		// sbci rxx, k
 				{	int k;
 					i++;
@@ -476,7 +476,7 @@ void searchprog(unsigned long adress, unsigned short size)	// searches a functio
 #endif
 					locstack+=k;
 					totstack+=k;
-				}		
+				}
 			}
 		}
 		else if (program[i]==0x9478)					// sei
@@ -493,7 +493,7 @@ void searchprog(unsigned long adress, unsigned short size)	// searches a functio
 			{	if (nested)
 				{	if (totstack>nestmaxstack)
 						nestmaxstack=totstack;
-				}		
+				}
 				nested=false;
 #ifdef DEBUG
 				printf ("cli\n");

@@ -94,7 +94,7 @@ string SectionTypes( Elf32_Word type )
         sRet = "DYNSYM";
         break;
     }
-    
+
     return sRet;
 }
 
@@ -126,7 +126,7 @@ SegmentTypes( Elf32_Word type )
     case PT_LOAD:
         sRet = "PT_LOAD";
         break;
-    case PT_DYNAMIC:        
+    case PT_DYNAMIC:
         sRet = "PT_DYNAMIC";
         break;
     case PT_INTERP:
@@ -142,7 +142,7 @@ SegmentTypes( Elf32_Word type )
         sRet = "PT_PHDR";
         break;
     }
-    
+
     return sRet;
 }
 
