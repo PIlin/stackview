@@ -1,0 +1,32 @@
+*** ELFIO-1.0.3-vanilla/ELFIO/ELFTypes.h	2013-02-22 13:23:30.000000000 +0100
+--- ELFIO-1.0.3/ELFIO/ELFTypes.h	2013-02-22 13:33:18.000000000 +0100
+***************
+*** 20,32 ****
+  #ifndef ELFTYPES_H
+  #define ELFTYPES_H
+  
+  
+  // Attention! Platform depended definitions.
+! typedef unsigned long  Elf32_Addr;
+! typedef unsigned short Elf32_Half;
+! typedef unsigned long  Elf32_Off;
+! typedef signed   long  Elf32_Sword;
+! typedef unsigned long  Elf32_Word;
+  
+  
+  ///////////////////////
+--- 20,33 ----
+  #ifndef ELFTYPES_H
+  #define ELFTYPES_H
+  
++ #include <stdint.h>
+  
+  // Attention! Platform depended definitions.
+! typedef uint32_t Elf32_Addr;
+! typedef uint16_t Elf32_Half;
+! typedef uint32_t Elf32_Off;
+! typedef  int32_t Elf32_Sword;
+! typedef uint32_t Elf32_Word;
+  
+  
+  ///////////////////////
