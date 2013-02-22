@@ -11,3 +11,12 @@
 *.lai
 *.la
 *.a
+
+
+# Dependencies
+ELFIO-*/
+ELFIO-*.tar.gz
+
+#
+elfdump
+*.dSYM
