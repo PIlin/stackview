@@ -1,6 +1,12 @@
-#include <stdio.h>
+#include <cstdio>
+#include <cstring>
 #include <string>
-#include <windows.h>
+
+
+#ifdef WIN32
+# include <windows.h>
+#endif
+
 #include "stackanalyse.h"
 
 FUNC function[4096];
